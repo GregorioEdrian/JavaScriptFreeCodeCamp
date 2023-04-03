@@ -1,0 +1,60 @@
+<script>
+  var miArreglo = ["Jhon", 24];
+  console.log(miArreglo);
+
+  var estudiantes = ["Gregoiro", "Edrian", "Walle", "Shirley"];
+  console.log(estudiantes);
+
+  var notas = [95, 67, 89 ,66];
+  console.log(notas);
+
+  /*Arreglos anidados*/
+  var listaDeEstudiantes = [["Nora", 97], ["Gino", 78]];
+  console.log(listaDeEstudiantes);
+
+  var listaDeProductos = [["camisa", 5.67, "S1235"], ["celulares", 250, "S356"], ["Zapatos", 36.7, "S678"]];
+  console.log(listaDeProductos);
+
+  /*Acceder a los arreglos*/
+  var miOtroArreglo = [["a", "b", "c"], [1, 2, 3]];
+  console.log(miOtroArreglo[0]);
+
+  /*Modificar el arreglo*/
+  var arregloModificar = ["a", "b", "c"]
+  arregloModificar[0] = 1;
+  console.log(arregloModificar);
+
+  /*Acceder a arreglos multidimencionales*/
+  var miOtroArreglo = [["a", "b", "c"], [1, 2, 3]]
+  console.log(miOtroArreglo[1][1])
+
+  /* Agregar elementos a un arerglo */
+  var agregarAlAreglo = [["a", "b", "c"], [1, 2, 3]]
+  agregarAlAreglo.push(["alpha", "Beta", "Gamma"])
+  console.log(agregarAlAreglo)
+
+  /*Quitar ultimo elemento de un arreglo.*/
+  var quitarAlAreglo = [["a", "b", "c"], [1, 2, 3]]
+  console.log(quitarAlAreglo)
+  var seElimino;
+  seElimino = quitarAlAreglo.pop()
+  console.log("Queda en el arreglo: ")
+  console.log(quitarAlAreglo)
+  console.log("se elimino de el arreglo: ")
+  console.log(seElimino)
+
+  /*Quitar primer elemento de un arreglo.*/
+  var quitarPrimerAreglo = [["a", "b", "c"], [1, 2, 3]]
+  console.log(quitarPrimerAreglo)
+  var seElimino;
+  seElimino = quitarPrimerAreglo.shift()
+  console.log(quitarPrimerAreglo)
+  console.log(seElimino)
+
+  /*Agregar elemento al principio del arreglo*/
+  var agregarPrincipioArreglo = [["a", "b", "c"], [1, 2, 3]]
+  console.log(agregarPrincipioArreglo)
+  console.log(" ")
+  var otro = agregarPrincipioArreglo.unshift(["Gamma", "Beta", "Alfa"])
+  console.log(otro)
+</script>

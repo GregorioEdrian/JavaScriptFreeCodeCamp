@@ -1,0 +1,13 @@
+<script>
+  function proximoEnFila(arreglo, elemento){
+    arreglo.push(elemento); //agregar al final del arreglo
+    return arreglo.shift(); // remover el primer elemento
+  }
+
+  var arreglo = [1, 2, 3 ,4, 5];
+  console.log("Antes: " + JSON.stringify(arreglo));
+
+  console.log(proximoEnFila(arreglo, 6));
+  console.log("Despues: " + JSON.stringify(arreglo));
+  
+</script>
