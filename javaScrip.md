@@ -378,6 +378,21 @@ Podemos retornar un valor en una función antes de otras lineas de codigo, por e
     };
   ```
 
+   ```
+    var miPerro = {
+      1:{
+        p1: "p1",
+        p2: "p2",
+        p3: "p3"
+      },
+      2:{
+        p1: "p1",
+        p2: "p2",
+        p3: "p3"
+      }
+    };
+  ```
+
 - Al valor de la izquierda se le llama propiedad del objeto y al de  la derecha el valor que tiene esta propiedad. Para acceder a la propiedad del objeto usamos la siguiente notación.
 
   ```
@@ -446,3 +461,628 @@ Podemos retornar un valor en una función antes de otras lineas de codigo, por e
   ~~~
 
 ### Usar objetos para busqueda.
+
+  ~~~
+  function buscarElementoQuimico(simbolo){
+    var simbolosQuimicos = {
+      "Al"  : "Aluminio",
+      "S"   : "Azufre",
+      "Cl"  : "Cloro",
+      "He"  : "Helio",
+      "B"   : "Boro",
+      "Li"  : "Litio",
+    };
+    return simbolosQuimicos[simbolo];
+  };
+  ~~~
+
+### Verificar propiedades.
+  Podemos verificar si un objeto tiene o no una propiedad, para esto usamos el metodo hasOwnProperty();.
+  ~~~
+  var simbolosQuimicos = {
+    "Al"  : "Aluminio",
+    "S"   : "Azufre",
+    "Cl"  : "Cloro",
+    "He"  : "Helio",
+    "B"   : "Boro",
+    "Li"  : "Litio",
+  };
+  
+  simbolosQuimicos.hasOwnProperty("Cl");
+  simbolosQuimicos.hasOwnProperty("Na");
+
+  function verificarPropiedad(obj, propiedad){
+    if (obj.hasOwnProperty(propiedad)){
+      return "Propiedad: " + obj[propiedad];
+    } else {
+      return "El objeto no tiene esta propiedad"
+    }
+  }  
+~~~
+
+### Objetos complejos.
+  ~~~
+    var ordenesDePizzas = [
+      {
+        "tipo": "margarita",
+        "tamaño": "individual",
+        "precio": 5.67,
+        "toppings":[
+          "extra queso",
+          "champiñones",
+          "piña"
+        ]
+        "paraLlevar": true
+      },
+      {
+        "tipo": "cuatro quesos",
+        "tamano": "familiar",
+        "precio": 18.34,
+        "toppings":[
+          "extra queso",
+          "pimenton"
+        ]
+        "paraLlevar": false
+      }
+    ];
+  ~~~
+
+  - Accedemos de forma analoga a como lo haciamos con arreglos.
+  ~~~
+    ordenesDePizzas[0]
+    ordenesDePizzas[1]
+    /*Para acceder a cada tipo en cada objeto accedemos igual que en los objetos.*/
+    ordenesDePizzas[0].tipo
+    ordenesDePizzas[1].tamano
+  ~~~
+
+  - Objetos anidados.
+
+  ~~~
+    var miReceta = {
+      "descripcion": "mi postre favorito",
+      "costo": 15.6,
+      "ingredientes": {
+        "masa": {
+          "harina" : "100 grs",
+          "sal": "1 cucharadita",
+          "agua": "1 taza"
+        },
+        "cobertura": {
+          "azucar": "120 grs",
+          "chocolate": "4 cucharadas",
+          "mantequilla": "200 grs"
+        }
+      }
+    };
+  ~~~
+
+  ¿Como accedemos a sus elementos?
+
+  ~~~
+    miReceta.descripcion;
+    miReceta.cobertura.chocolate
+    masaMiReceta = miReceta.masa
+    masaMiReceta.harina
+    masaMiReceta.sal
+    masaMiReceta.agua
+    /*Tambien podemos usar la notación de corchetes*/
+  ~~~
+
+### Arreglos anidados.
+
+  ~~~
+    var misPlantas = [
+      {
+        tipo : "flores",
+        lista : [
+          "rosas", 
+          "tulipanes",
+          "dientes de leon"
+        ]
+      },
+      {
+        tipo : "árboles",
+        lista : [
+          "abeto",
+          "pino",
+          "abedul"
+        ]
+      }
+    ];
+  ~~~   
+  ¿Como accedemos?
+  ~~~
+    misPlantas[0].lista[0];
+    misPlantas[1].lista[2];
+  ~~~
+
+### Ciclos o bucles (Loop).
+
+  - Ciclo while.
+
+    Se usa cuando no tenemos un numero especifico de iteraciones.
+
+    ~~~
+      while (i <= 3) { 
+        console.log("Hola, mundo");
+        i++
+      }
+      /*Cuando la condición es verdadera sigue ejecutando el ciclo, cuando es falsa se detiene.*/
+    ~~~
+
+    ~~~
+      var miArreglo = [];
+      var i = 0;
+
+      while (i < 10) { 
+        miArreglo.push(i);
+        i++
+      }
+      /*Cuando la condición es verdadera sigue ejecutando el ciclo, cuando es falsa se detiene.*/
+
+      console.log(miArreglo);
+    ~~~
+
+  - Ciclo while.      
+
+    Se usa cuando tenemos un numero especifico de iteraciones.
+
+    ~~~
+      var miArreglo = [];
+
+      for (var i = 0; i < 10; i++){
+        miArreglo.push(i);
+      }
+      console.log(miArreglo)
+    ~~~
+
+    Ejemplos de **for** anidados.
+
+    ~~~
+      var miArreglo = [[1,2,3], [4,5,6],[7,8,9]];
+
+      for (var i = 0; i < miArreglo.length; i++){
+        var arregloAnidado = miArrego[i];
+        for (var j = 0; j < arregloAnidado.length; j++){
+          console.log(arregloAnidado[j])
+        }
+        
+      }
+    ~~~
+
+### Ciclo do While (Hacer mientras).
+  A diferenvia del **While** el **doWahile** ejecuta el codigo primero y luego evalua la sentencia.
+  ~~~
+    do {
+      console.log(x);
+      x++;
+    } while (x < 10);
+  ~~~
+
+### Numeros aleatorios.
+
+  Usamos la librería **Math**
+
+  ~~~
+    function generarNumerosAleatorios(){
+      return Math.random();
+    }
+  ~~~
+
+  - Para números aletrios enteros usamos **floor()**
+  ~~~
+    Math.floor(Math.random()*20); 
+    /*obtenemos entero entre 0-20*/
+  ~~~
+
+  - Podemos generar numeros aleatorios en un rango inferior y superior.
+
+  ~~~
+    function rangoAleatorio(lInf, lSup){
+      return Math.floor(Math.random()*(lSup - lInf + 1)) + lInf;
+    }
+  ~~~
+
+### Conversión de tipos.
+
+  - Cadenas a number.
+    - De **string numerico** a **entero** usamos la función **parseInt("-5")**
+    - De **decimal** a **entero** usamos la función **parseInt("83.15")**
+    - Si convertimos un **string no numerico** nos da **NAN**
+    - **string** en otro sistema numerico, por ejemplo, comberción de binario a **entero**. **parseInt("110111", 2)** lo convierte a su equivalente en **entero**.
+    - **binario** a **entero**, **parseInt(110111, 2)**.
+    - **hexadecimal** a **decimal**, solo se puieden representar como cadenas estos numeros. **parseInt("3E0A", 16)**.
+
+### Operador condiccional ternario.
+
+  - Nos permite compactar un condicional en una linea.
+
+    ~~~
+      return x < y ? x : y;
+      /*si x < y es true return x si no return  y */
+      x < y ? x : y;
+    ~~~
+  
+  - Multiples operadores ternarios.
+
+    ~~~
+      function compararNumeros(a, b){
+        return x == y ? "a y b son iguales" 
+            : x > b ? "a es mayor que b"
+            : "b es mayor que a";
+      }
+    ~~~
+
+### var vs let.
+
+ - Cuando declaramos una variable con **var**, la podemos declarar mas de una vez, cuando usamos **let** no podemos declarar la variable mas de una ves.
+
+ - Ambito de **let** y **var**.
+  
+  - Con **var** podemos usar la variable global en cualquier parte del programa y podemos definir variables dentro de una función solo que no las podremos usar fuera de la función.
+
+  - Cuando usamos **let** para declarar una variable, su ambito esta restringido al bloque donde se define. Por ejemplo si usamos un iterador **i** de un ciclo, este iterador si lo declaramos con let, no lo podremos llamar fuera del ciclo, pero con **var** si se puede.
+
+  - Si tenemos un bloque de codigo **if** y declaramos una variable con **let**, no podremos acceder a esta variable fuera de ese bloque de codigo.
+
+### Opcion const.
+
+  - Si se declara una variable con **const** no podremos modificar el valor de esa variable una ves que sea declarada, ademas esta al momento de ser declarada se le debe asignar su valor, estas variables se declaran con letras mayusculas y se separan las palabras con giones bajos.
+
+  ~~~
+    const PI = 3.14;
+  ~~~
+
+  - Cuando se declara una variable con **const**, no podemos resignar otro valor nuevo a esa variable, pero si podemos cambiar su valor. Por ejemplo un arreglo.
+
+  ~~~
+    const Mi_ARREGLO = [9, 8, 7, 6];
+    Mi_ARREGLO[0] = 1;
+    Mi_ARREGLO[1] = 2;
+    Mi_ARREGLO[2] = 3;
+    Mi_ARREGLO[3] = 4;
+  ~~~
+
+  - ¿Como crear un objeto inmutable?
+
+    Ejemplo.
+    ~~~
+      let colores = {
+        "verde" : "#10e04b"
+        "azul" : "1b50e0"
+        "negro" : "#000000"
+        "blanco" : "#ffffff"
+      }
+      object.freeze(colores) /*congela al objeto en ese estado*/
+    ~~~
+
+### Funciones flecha.
+
+  - Son un tipo mas compacto de funciones, se usa mas que todo cuando queremos crear funciones anonimas.
+
+    ~~~
+      const fecha = () => new Date();
+      /*Esta función retorna un objeto del tipo Date*/
+    ~~~
+
+  - Agregar parametros a funciones flecha.
+    ~~~
+      const sumarTres = (x) => x +3;
+
+      const concatenarArreglos = (arr1, arr2) => arr1.concat(arr2);
+    ~~~
+  
+  - **Si la función tiene mas de una linea tenemos que mantener las llaves.**
+
+    ~~~
+     const sumar = (a, b) => {
+      let num = 6;
+      return a + b + num;
+     };
+     console.log(sumar(1, 1)) 
+    ~~~
+
+### Valores por defecto para parametros para cualquier función. 
+
+  - Esto es util cuando queremos permitir que se onita un parametro.
+
+    ~~~
+      const incrementar = (num, valor = 1) => num + valor;
+      console.log(incrementar(5))
+      console.log(incrementar(5, 3))
+    ~~~
+
+### Operador rest.
+
+  - Este operador permite pasar cualquier número de argumentos a una función y estos se agrupen en un arreglo. Consiste en escribir tres puntos y la palabra args **(...args)**
+
+  ~~~
+    function miFuncion(...args){
+      console.log(args)
+    }
+  ~~~
+  **Ejemplo**
+  ~~~
+    const sumar = (...args) => {
+      return args.reduce((a, b) => a + b, 0 );
+      /*reduce con estos argumentos, suma los elementos del arreglo y retorna el resultado.
+      Pasamos una función flecha como argumento.*/
+
+    }
+  ~~~
+  
+### Operador spret.
+
+  - Hace lo contrario que rest. Recibe como parametro un arreglo y los desglosa en orden asignando a cada parametro su valor.
+
+  ~~~
+    const numeros = [1,2,3]
+    function sumar(x, y, z){
+      return x + y + z;
+    }
+    console.log(sumar(...numeros))
+  ~~~
+
+### Sintaxis de desestructuración.
+  
+  - Nos permite asignar las propiedades de un objeto a variables.
+
+  ~~~
+    const usuario = {
+      nombre: "Gino Smith",
+      edad: 34
+    }
+    const {nombre, edad} = usuario;
+    
+    var coordenadas = {
+      x:4,
+      y:6,
+      z:12
+    };
+
+    var {x, y, z} = coordenadas;
+  ~~~
+
+  - Forma mas elevorada por ejemplo si tenemos objetos anidados.
+
+   ~~~
+    const usuario = {
+      johnDoe: {
+        edad:27,
+        correo: "johnDoe@freecodecamp.com"
+      }
+    };
+    
+    const {johnDoe:{edad, correo}} = usuario;
+    /*Para asignar un nombre nuevo usamos*/
+    const {johnDoe:{edad:edadDelUsuario, correo:correoDelUsuario}} = usuario;
+  ~~~
+
+### Sintaxis de desestructuración Arreglos.
+  
+  - Nos permite asignar los valores de un arreglo a variables.
+
+  ~~~
+    var a;
+    var b;
+    var c;
+    [a, b, c] = [1,2,3,4,5,6] /*Se asignan los dos primeros*/
+    [a,b, , ,c] = [1,2,3,4,5,6] /*Se asignan los dos primeros y el quinto elemento en el indice 4*/
+  ~~~
+
+  - Intercambiar valores.
+
+  ~~~
+    var a = 8;
+    var b = 6;
+    [b, a] = [a, b];
+  ~~~
+
+### Sintaxis de desestructuración con el operador rest.
+
+  ~~~
+    var a;
+    var b;
+    var arr;
+    [a, b, ... arr] = [1,2, 3, 4, 5, 6, 7];
+    /*A la variable arr se le asigna el arrego [3,4,5,6,7]*/
+  ~~~
+
+  ~~~
+    const arregloInicial = [1, 2, 3, 4, 5, 6, 7, 8];
+    function removerTresPrimerosElementos(arreglo){
+      var nuevoArreglo;
+      const [ , , ,...neuvoArreglo] = arreglo;
+      return nuevoArreglo;
+    }
+    const arregloFinal = removerTresPrimerosElementos(arregloInicial);
+    console.log(arregloFinal);
+  ~~~
+
+### sintaxis de Desestructuración: Pasar Objeto como Argumento.
+
+  ~~~
+    var nuevoPerfilCliente = {
+      nombre: "Jane Doe",
+      edad: 24,
+      nacionalidad: "española",
+      ubicacion: "España"
+    };
+    const actualizarPerfil = ({nombre, edad, nacionalidad, ubicacion}) => {
+      console.log(nombre);
+      console.log(edad);
+      console.log(nacionalidad);
+      console.log(ubicacion);
+    };
+    actulizarPerfil(nuevoPerfilCliente);
+
+    const estadisticas = {
+      max: 56.78,
+      desviacionEstandar: 4.34,
+      mediana: 34.54,
+      moda: 23.87,
+      min: -0.75,
+      promedio: 35.85
+    };
+    // const puntoMedio = (estadistica) => (e.max + e.min)/2.0;
+    const mitad = ({max, min}) => (max + min)/2.0;
+    console.log(mitad(estadisticas));
+  ~~~
+
+
+### Plantillas literales o plantillas de cadenas.
+
+  - Características:
+    - Se usa el acento invertido (backtick) ` en lugar de comillas.
+    - Pueden contener comillas simples y dobles.
+    - Las líneas se preservan como se escriben en el código.
+    - Para reemplazar una variable se escribe ${variable}.
+    - Dentro de ${} también puedes escribir expresiones.
+
+
+    ~~~
+      var a = 6;
+      console.log(`El valor de a es ${a}.`);
+
+      var nombre  = "Nora";
+      var edad = 6;
+      console.log(`Mi nombre es ${nombre} y tengo ${edad} años.`);
+
+      var miArreglo = [1, 2, 3, 4];
+      console.log(`El arreglo es: ${JSON.stringify(miArreglo)}`);
+
+      // Ejemplo con objeto
+
+      const persona = {
+        nombre: "Gino Cass",
+        edad: 10
+      };
+  
+      const saludo = `¡Hola! Mi nombre es ${persona.nombre} 
+      y tengo ${persona.edad} años.`;
+  
+      console.log(saludo);
+    ~~~
+
+### Crear objetos de forma concisa.
+
+  ~~~
+    // Inicialmente
+
+    const crearPersona = (nombre, edad, idioma) => {
+      return {
+        nombre: nombre,
+        edad: edad,
+        idioma: idioma
+      };
+    };
+
+    console.log(crearPersona("Gino Smith", 28, "Español"));
+
+    // Alternativa más concisa
+
+    const crearPersona = (nombre, edad, idioma) => ({nombre, edad, idioma});
+
+    console.log(crearPersona("Gino Smith", 28, "Español"));   
+  ~~~
+  
+### Metodos en Java Script.
+
+
+  - Podemos declarar funciones dentro de los objetos que se crean en los programas.
+
+
+  ~~~
+    // Versión ES5
+
+    const persona = {
+      nombre: "Isabel",
+      presentarse: function() {
+        return `¡Hola! Mi nombre es ${this.nombre}.`;
+        /* this se refiere al objeto con el que se esta trabajando, en este caso al 
+        objeto persona */
+      }
+    };
+
+    console.log(persona.presentarse()); /*Se denomina metodo si el valor de la propiedad 
+    es una función como presentarse()*/
+
+    // Versión ES6
+
+    const persona = {
+      nombre: "Isabel",
+      presentarse() {
+        return `¡Hola! Mi nombre es ${this.nombre}.`;
+      }
+    };
+
+    persona.presentarse();
+~~~
+
+
+### Crea una clase en JavaScript.
+
+  - Una clase es simplemente algo parecido a un plano que noss permite crear distintos objetos de la misma clase.
+
+
+  ~~~
+    class TransbordadorEspacial { /*UPPER CAMEL CASE*/
+      /*El objeto TransbordadorEspacial tendra una propiedad llamada planeta*/
+      constructor(planeta) {
+        this.planeta = planeta;
+      }
+    }
+
+    var zeus = new TransbordadorEspacial('Júpiter');
+    console.log(zeus.planeta);
+
+    var apolo = new TransbordadorEspacial('Marte');
+    console.log(zeus.planeta);
+
+    // Ejemplo
+
+    class Mascota {
+      constructor(nombre, edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+      }
+    }
+
+    var miMascota = new Mascota("Nora", 5);
+
+    console.log(miMascota.nombre);
+    console.log(miMascota.edad);
+
+    var tuMascota = new Mascota("Gino", 2);
+  ~~~
+
+### Getters y Setters.
+
+  - Getters:
+  - Setters:
+  ~~~
+    class Libro {
+      constructor(autor) {
+      this._autor = autor; /*_autor Proteje la data como si fuera privada, es una 
+      convension que se usa*/
+    }
+
+    // Getter accedemos al valor de forma directa.
+    get autor() {
+      return this._autor;
+    }
+
+    // Setter Otorgamos o actualizamos un nuevo valor al objeto.
+    set autor(nuevoAutor) {
+      this._autor = nuevoAutor;
+      }
+    }
+
+    const libro = new Libro("anónimo");
+    console.log(libro.autor);
+
+    libro.autor = "Gino Smith";
+    console.log(libro.autor);
+  ~~~
+

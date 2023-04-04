@@ -1,0 +1,19 @@
+<script>
+  /*function generarNumerosAleatorios(){
+    return Math.random();
+  }
+
+  console.log(generarNumerosAleatorios())
+  console.log(Math.random())
+
+  */
+
+  function rangoAleatorio(lInf, lSup){
+    return Math.floor(Math.random()*(lSup - lInf + 1)) + lInf;
+  }
+  
+  for (var i=0; i<20; i++){
+    console.log(rangoAleatorio(3, 15))
+  }
+
+</script>
